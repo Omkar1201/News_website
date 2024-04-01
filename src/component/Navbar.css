@@ -23,3 +23,16 @@
     display: none;
   }
 }
+.navbtn button:hover + div {
+    border: 2px solid gray;
+  }
+  .line{
+    border-width: 2px;
+  border-color: black;
+  width: 2rem;
+  transition: border-color 0.3s ease, transform 0.3s ease; /* Add transition effect for border color and transform */
+  transform: translateX(0);
+  }
+  .line:hover{
+    transform: translateX(20px);
+  }
