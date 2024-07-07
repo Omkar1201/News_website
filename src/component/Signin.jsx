@@ -6,11 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/Appcontext';
 export default function Signin() {
-  const {setusername,setpassword}=useContext(AppContext)
+  const {setusername,setpassword,setname,username}=useContext(AppContext)
   const [eye, seteye] = useState(true)
   const navigate = useNavigate();
   function handlelogin(event) {
     event.preventDefault();
+    setname(username);
     toast.success('Login Successful!');
     navigate('/')
   }

@@ -14,6 +14,7 @@ export default function AppContextProvider({ children }) {
   const [iserror, setiserror] = useState(false);
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
+  const [name, setname] = useState('')
   const navigate = useNavigate();
 
   const fetchData = useCallback(async () => {
@@ -66,7 +67,8 @@ export default function AppContextProvider({ children }) {
     clicked, setclicked,
     iserror,
     username, setusername,
-    password, setpassword
+    password, setpassword,
+    name,setname
   };
   return (
     <AppContext.Provider value={contextValue}>
