@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { FaUserAlt } from 'react-icons/fa'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/Appcontext';
 export default function Signin() {
+  const {setusername,setpassword}=useContext(AppContext)
   const [eye, seteye] = useState(true)
-  const [username, setusername] = useState('')
-  const [password, setpassword] = useState('')
   const navigate = useNavigate();
   function handlelogin(event) {
     event.preventDefault();
@@ -22,7 +22,7 @@ export default function Signin() {
         <form onSubmit={handlelogin} className=' flex flex-col items-center gap-5 rounded-lg'>
 
           <div className='border   flex items-center w-fit px-2 py-1 rounded-2xl '>
-            <input type='text' required onChange={(event) => setusername(event.target.value)} placeholder='Username' className='  bg-transparent outline-none w-[14rem]' />
+            <input type='text' required onChange={(event) => setusername(event.target.value)} placeholder='Username' maxLength={15} className='  bg-transparent outline-none w-[14rem]' />
             <FaUserAlt />
           </div>
           <div className=' border flex items-center w-fit  px-2 py-1 rounded-2xl'>

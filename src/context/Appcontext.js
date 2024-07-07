@@ -11,7 +11,9 @@ export default function AppContextProvider({ children }) {
   const [search_txt, setsearch_txt] = useState('');
   const [liked_article, setLikedArticles] = useState([]);
   const [clicked, setclicked] = useState(false);
-  const [iserror, setiserror] = useState(false)
+  const [iserror, setiserror] = useState(false);
+  const [username, setusername] = useState('')
+  const [password, setpassword] = useState('')
   const navigate = useNavigate();
 
   const fetchData = useCallback(async () => {
@@ -27,7 +29,7 @@ export default function AppContextProvider({ children }) {
           headers: {
             // ... (rest of your code)
             'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': "361fabf4b8mshafebafe5290098fp1d1451jsnd862b326e68f",
+            'X-RapidAPI-Key': `${process.env.REACT_APP_API}`,
             'X-RapidAPI-Host': 'news-search4.p.rapidapi.com'
           }
         }
@@ -62,7 +64,9 @@ export default function AppContextProvider({ children }) {
     liked_article,
     setLikedArticles,
     clicked, setclicked,
-    iserror
+    iserror,
+    username, setusername,
+    password, setpassword
   };
   return (
     <AppContext.Provider value={contextValue}>

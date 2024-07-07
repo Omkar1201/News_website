@@ -14,7 +14,7 @@ import logo from '../images/icons8-newspaper-50.png'
 function Navbar() {
   const cur = new Date().toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
   const location = useLocation();
-  const { search_txt, setsearch_txt, handlesubmit } = useContext(AppContext)
+  const { search_txt, setsearch_txt, handlesubmit ,username} = useContext(AppContext)
 
   return (
 
@@ -32,7 +32,9 @@ function Navbar() {
         </div>
         <div className=' flex'>
           <Link to='signin'>
-            <button className={`fauser ${location.pathname === '/signin' ? 'text-blue-500' : ''} border-r-2 border-black px-5 relative`}><FaUser />
+            <button className={`fauser ${location.pathname === '/signin' ? 'text-blue-500' : ''} border-r-2 border-black px-5 relative flex flex-col items-center gap-1`}>
+            <FaUser />
+            <div className=' text-[0.6rem]'>{username ? username : ''}</div>
               {/* <div className={`${location.pathname === '/signin' ? 'border-blue-500' : 'border-transparent group-hover:border-gray-300 '}  border-2 absolute mt-[0.1rem] w-[1.1rem]`}></div> */}
             </button>
           </Link>
