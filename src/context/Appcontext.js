@@ -30,7 +30,7 @@ export default function AppContextProvider({ children }) {
           headers: {
             // ... (rest of your code)
             'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': `${process.env.REACT_APP_API}`,
+            'X-RapidAPI-Key': "3e5b1c40bdmsh3bec8f6ef57e01fp1acdc8jsne3bc8adbc2ea",
             'X-RapidAPI-Host': 'news-search4.p.rapidapi.com'
           }
         }
