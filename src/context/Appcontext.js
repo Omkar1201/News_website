@@ -6,7 +6,7 @@ export const AppContext = createContext();
 
 export default function AppContextProvider({ children }) {
   const [data, setdata] = useState([]);
-  const [category, setcategory] = useState("indian")
+  const [category, setcategory] = useState("india")
   const [loading, setloading] = useState(false);
   const [search_txt, setsearch_txt] = useState('');
   const [liked_article, setLikedArticles] = useState([]);
@@ -30,7 +30,7 @@ export default function AppContextProvider({ children }) {
           headers: {
             // ... (rest of your code)
             'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': "3e5b1c40bdmsh3bec8f6ef57e01fp1acdc8jsne3bc8adbc2ea",
+            'X-RapidAPI-Key': "550d7eda1amsh530bf6f993f2135p1aa95fjsna8050654564b",
             'X-RapidAPI-Host': 'news-search4.p.rapidapi.com'
           }
         }
