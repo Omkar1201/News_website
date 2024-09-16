@@ -1,78 +1,78 @@
 import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 export const AppContext = createContext();
 
 export default function AppContextProvider({ children }) {
-  const [data, setdata] = useState([]);
-  const [category, setcategory] = useState("indian")
-  const [loading, setloading] = useState(false);
-  const [search_txt, setsearch_txt] = useState('');
-  const [liked_article, setLikedArticles] = useState([]);
-  const [clicked, setclicked] = useState(false);
-  const [iserror, setiserror] = useState(false);
-  const [username, setusername] = useState('')
-  const [password, setpassword] = useState('')
-  const [name, setname] = useState('')
-  const navigate = useNavigate();
+	const [data, setdata] = useState([]);
+	const [category, setcategory] = useState("indian")
+	const [loading, setloading] = useState(false);
+	const [search_txt, setsearch_txt] = useState('');
+	const [liked_article, setLikedArticles] = useState([]);
+	const [clicked, setclicked] = useState(false);
+	const [iserror, setiserror] = useState(false);
+	const [username, setusername] = useState('')
+	const [password, setpassword] = useState('')
+	const [name, setname] = useState('')
+	const navigate = useNavigate();
 
-  const fetchData = useCallback(async () => {
-    try {
-      setloading(true);
-      const response = await axios.post(
-        'https://news-search4.p.rapidapi.com/news',
-        new URLSearchParams({
-          find: category,
-          sortby: 'popular',
-        }),
-        {
-          headers: {
-            // ... (rest of your code)
-            'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': "3e5b1c40bdmsh3bec8f6ef57e01fp1acdc8jsne3bc8adbc2ea",
-            'X-RapidAPI-Host': 'news-search4.p.rapidapi.com'
-          }
-        }
-      );
-      setdata(response.data.response.filter((res) => res.image));
-      setloading(false);
-    } catch (error) {
-      console.error(error);
-      setiserror(true);
-    }
-  }, [category]);
-  useEffect(() => {
-    fetchData();
-  }, [category, fetchData]);
+	const fetchData = useCallback(async () => {
+		try {
+			setloading(true);
+			const url = `https://news67.p.rapidapi.com/v2/topic-search?batchSize=30&languages=en&search=${category}`;
+			const options = {
+				method: 'GET',
+				headers: {
+					'x-rapidapi-key': '5674bb4562mshea86b87f099711dp1a8329jsn1911f0f29e62',
+					'x-rapidapi-host': 'news67.p.rapidapi.com'
+				}
+			};
 
-
-  function handlesubmit(event) {
-    setcategory(search_txt);
-    navigate('/')
-    event.preventDefault();
-  }
+			try {
+				const response = await fetch(url, options);
+				const result = await response.json();
+				setdata(result.news)
+				console.log(result);
+			} catch (error) {
+				console.error(error);
+			}
+		} catch (error) {
+			console.error(error);
+			setiserror(true);
+		}
+		finally{setloading(false)}
+	}, [category]);
+	useEffect(() => {
+		fetchData();
+	}, [category, fetchData]);
 
 
-  const contextValue = {
-    data,
-    loading,
-    search_txt,
-    setsearch_txt,
-    setcategory,
-    fetchData,
-    handlesubmit,
-    liked_article,
-    setLikedArticles,
-    clicked, setclicked,
-    iserror,
-    username, setusername,
-    password, setpassword,
-    name,setname
-  };
-  return (
-    <AppContext.Provider value={contextValue}>
-      {children}
-    </AppContext.Provider>
-  );
+	function handlesubmit(event) {
+		setcategory(search_txt);
+		navigate('/')
+		event.preventDefault();
+	}
+
+
+	const contextValue = {
+		data,
+		loading,
+		search_txt,
+		setsearch_txt,
+		setcategory,
+		fetchData,
+		handlesubmit,
+		liked_article,
+		setLikedArticles,
+		clicked, setclicked,
+		iserror,
+		username, setusername,
+		password, setpassword,
+		name, setname
+	};
+	return (
+		<AppContext.Provider value={contextValue}>
+			{children}
+		</AppContext.Provider>
+	);
 }

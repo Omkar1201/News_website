@@ -36,6 +36,7 @@ export default function Home() {
               <div className='flex flex-wrap m-auto gap-5 justify-center my-2'>
 
                 {
+                  data&&
                   data.slice(4,).map((dta, index) => (
                     <Card single_data={dta} key={index} />
                   ))
