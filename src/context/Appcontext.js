@@ -30,12 +30,12 @@ export default function AppContextProvider({ children }) {
           headers: {
             // ... (rest of your code)
             'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': "550d7eda1amsh530bf6f993f2135p1aa95fjsna8050654564b",
+            'X-RapidAPI-Key': "361fabf4b8mshafebafe5290098fp1d1451jsnd862b326e68f",
             'X-RapidAPI-Host': 'news-search4.p.rapidapi.com'
           }
         }
       );
-      setdata(response.data.response.filter((res) => res.image));
+      setdata(response.data.response && response.data.response.filter((res) => res.image));
       setloading(false);
     } catch (error) {
       console.error(error);
