@@ -26,7 +26,7 @@ export default function AppContextProvider({ children }) {
           find: category,
           sortby: 'popular',
         }),
-        {
+        { 
           headers: {
             // ... (rest of your code)
             'content-type': 'application/x-www-form-urlencoded',
