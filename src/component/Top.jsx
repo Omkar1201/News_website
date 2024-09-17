@@ -11,7 +11,7 @@ export default function Top() {
         Top news
       </div>
       <div className='flex gap-4 wrapapply'>
-        <div className=' w-[50%] changewidth'>
+        <div className=' w-[70%] changewidth'>
           {data[0] ?
             (
               <div>

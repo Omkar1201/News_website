@@ -28,13 +28,13 @@ export default function Card({ single_data }) {
                     <div className='text-xs'>Published at: {single_data.PublishedOn.substring(0, 10)} Time: {single_data.PublishedOn.substring(11, 16)}</div>
                     <div className=' text-[0.9rem] font-bold my-2'>{single_data.Title}</div>
                     {/* <div>{data.data.content}</div>  */}
-                    <div className='mb-7 text-blue-700 text-[0.85rem] font-semibold'>{single_data.Summary.substr(0,200)}...</div>
+                    <div className=' text-blue-700 text-[0.85rem] font-semibold'>{single_data.Summary.substr(0,200)}...</div>
+                    <div className='text-xs font-semibold text-right mb-8 text-blue-700'>{single_data.Categories.label ? '#'+single_data.Categories.label : 'Not found'}</div>
                     <div className='absolute bottom-4 '>
                         <a href={single_data.Url} target='blank'>
                             <button className='border text-gray-800 transition-all duration-[0.2s] px-2 py-1 rounded-sm bg-blue-400 hover:bg-blue-500 font-bold text-sm'>Go to Article</button>
                         </a>
                     </div>
-                    {/* <div className='text-xs font-semibold absolute bottom-0 right-2'>Author: {single_data.author ? single_data.author.substring(0, 15) : 'Not found'}</div> */}
                 </div>
             </div>
     )
