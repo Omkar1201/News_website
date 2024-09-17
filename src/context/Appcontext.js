@@ -23,7 +23,7 @@ export default function AppContextProvider({ children }) {
 			const options = {
 				method: 'GET',
 				headers: {
-					'x-rapidapi-key': '5674bb4562mshea86b87f099711dp1a8329jsn1911f0f29e62',
+					'x-rapidapi-key': '550d7eda1amsh530bf6f993f2135p1aa95fjsna8050654564b',
 					'x-rapidapi-host': 'news67.p.rapidapi.com'
 				}
 			};
