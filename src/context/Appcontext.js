@@ -27,7 +27,7 @@ export default function AppContextProvider({ children }) {
 					'x-rapidapi-host': 'news67.p.rapidapi.com'
 				}
 			};
-
+ 
 			try {
 				const response = await fetch(url, options);
 				const result = await response.json();
